@@ -1,0 +1,4 @@
+doc("http://boards.4chan.org/pol/catalog")
+  //div[@class="thread"]:<links>[
+     ./a:<link=qualify-url(@href)>
+  ]

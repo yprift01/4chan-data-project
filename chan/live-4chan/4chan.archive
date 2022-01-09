@@ -1,0 +1,4 @@
+doc("https://boards.4chan.org/pol/thread/218832673")
+   /.:<attributes>
+        [? //div[@class='closed']:<archived=string(.)> ]
+        [? //div[@class='boxbar']:<deleted=string(.)> ]

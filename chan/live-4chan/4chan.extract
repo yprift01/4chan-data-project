@@ -1,0 +1,39 @@
+doc("https://boards.4chan.org/pol/thread/312085874")
+    /.:<result> [
+        .:<attributes> [
+             .[? //img[@alt="Archived"]:<archived=string(@title)> ]
+              [? //div[@class='boxbar']/h2:<deleted=string(.)> ]
+        ]
+        :<data> [
+            //div[@class="post op"]:<thread>
+              [
+                .:<op>
+
+                       [? //div[@class="post op"]/div[@class="file"]/a:<image=string(@href)> ]
+                       [? //div[@class="post op"]/div[@class="file"]/div[@class="fileText"]:<image_name=string(.)> ]
+                       [? //div[@class="post op"]/div[@class="postInfo desktop"]/span[@class="subject"]:<subject=string(.)> ]
+                       [? //div[@class="post op"]/div[@class="postInfo desktop"]/span[@class="nameBlock"]/span[@class="name"]:<author_name=string(.)> ]
+                       [? //div[@class="post op"]/div[@class="postInfo desktop"]/span[@class="nameBlock"]/span[contains(@class,"posteruid")]/span[1]:<authorid=string(.)> ]
+                       [? //div[@class="post op"]/div[@class="postInfo desktop"]/span[@class="dateTime"]:<date_time=string(.)> ]
+                       [? //div[@class="post op"]/div[@class="postInfo desktop"]/span[@class="postNum desktop"]/a[2]:<post_number=string(.)> ]
+                       [? //div[@class="post op"]//blockquote[@class="postMessage"]:<message=string(.)> ]
+                       [? //div[@class="post op"]/div[@class="postInfo desktop"]/div[@class="backlink"]/span:<direct_replies>
+                                [
+                                  .:<post_number=string(.)>
+                                ]
+                        ]
+                        [? //div[@class="post op"]/div[@class="postInfo desktop"]//span[contains(@class, "flag")]:<flag=string(@title)> ]
+                ]
+                [? //div[@class="postContainer replyContainer"]:<replies>  [
+                        ./div[@class="post reply"]:<reply> [
+                          ./blockquote[@class="postMessage"]:<message=string(.)>
+                          /../..//div[@class="postInfo desktop"]//span[@class="nameBlock"]/span[@class="name"]:<author_name=string(.)>
+                          /../..//span[contains(@class,"posteruid")]/span[1]:<authorid=string(.)>
+                          /../../..//span[@class="dateTime"]:<date_time=string(.)>
+                          /../..//span[@class="postNum desktop"]/a[2]:<post_number=string(.)>
+
+                        ]
+                    ]
+                ]
+        ]
+     ]
