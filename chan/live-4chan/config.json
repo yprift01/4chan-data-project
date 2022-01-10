@@ -1,0 +1,5 @@
+"mongo": {
+      "connection": "mongodb+srv://<user>:<password>@rs.prifti.us/?readPreference=secondary&serverSelectionTimeoutMS=5000&connectTimeoutMS=10000&authSource=admin&authMechanism=SCRAM-SHA-256",
+      "config_db": "config",
+      "data_core_db": "data-core" 
+}
