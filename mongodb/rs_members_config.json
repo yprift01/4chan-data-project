@@ -1,0 +1,67 @@
+[
+	{
+		"_id" : 1,
+		"host" : "data-gather-p1.prifti.us:27777",
+		"arbiterOnly" : false,
+		"buildIndexes" : true,
+		"hidden" : false,
+		"priority" : 0.6,
+		"tags" : {
+
+		},
+		"slaveDelay" : NumberLong(0),
+		"votes" : 1
+	},
+	{
+		"_id" : 2,
+		"host" : "data-gather-p2.prifti.us:27777",
+		"arbiterOnly" : false,
+		"buildIndexes" : true,
+		"hidden" : false,
+		"priority" : 0.1,
+		"tags" : {
+
+		},
+		"slaveDelay" : NumberLong(0),
+		"votes" : 1
+	},
+	{
+		"_id" : 3,
+		"host" : "data-gather-p3.prifti.us:27777",
+		"arbiterOnly" : true,
+		"buildIndexes" : true,
+		"hidden" : false,
+		"priority" : 0,
+		"tags" : {
+
+		},
+		"slaveDelay" : NumberLong(0),
+		"votes" : 1
+	},
+	{
+		"_id" : 4,
+		"host" : "data-gather-p4.prifti.us:27777",
+		"arbiterOnly" : false,
+		"buildIndexes" : true,
+		"hidden" : false,
+		"priority" : 0.2,
+		"tags" : {
+
+		},
+		"slaveDelay" : NumberLong(0),
+		"votes" : 1
+	},
+	{
+		"_id" : 5,
+		"host" : "data-gather-p5.prifti.us:27776",
+		"arbiterOnly" : false,
+		"buildIndexes" : true,
+		"hidden" : false,
+		"priority" : 0.1,
+		"tags" : {
+
+		},
+		"slaveDelay" : NumberLong(0),
+		"votes" : 1
+	}
+]
