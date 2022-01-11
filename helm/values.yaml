@@ -26,4 +26,14 @@ crons:
   concurrencyPolicy: Forbid
   failedJobsHistoryLimit: 3
   successfulJobsHistoryLimit: 1
-
+- "2":
+  name: dcs-job-chanapi
+  type: extraction
+  app: 4chan
+  command: source activate && git pull && PYTHONPATH=./ python py/jobs/api_scraper.py
+  schedule: "0 */1 * * *"
+  parallelism: 1
+  completions: 1
+  concurrencyPolicy: Forbid
+  failedJobsHistoryLimit: 3
+  successfulJobsHistoryLimit: 1
