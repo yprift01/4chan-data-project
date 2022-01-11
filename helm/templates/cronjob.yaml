@@ -1,0 +1,32 @@
+{{- range $crons := .Values.crons }}
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  namespace: {{ $.Values.env }} #dcs
+  name:  {{ $crons.name }} #dcs-job-chan
+  labels:
+    type: {{ $crons.type }} #discovery
+    app: {{ $crons.app }} #4chan
+    chart: "{{ $.Chart.Name }}-{{ $.Chart.Version }}"
+spec:
+  schedule: {{ $crons.schedule | quote }} # "*/10 * * * *"
+  failedJobsHistoryLimit: {{ $crons.failedJobsHistoryLimit | default 0 }}
+  successfulJobsHistoryLimit: {{ $crons.successfulJobsHistoryLimit | default 0 }}
+  startingDeadlineSeconds: {{ $crons.startingDeadlineSeconds | default 0 }}
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          imagePullSecrets:
+            - name: ypphdrepo
+          containers:
+            - name: data-gather
+              image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag }}"
+              command: ["bash", "-c", "{{ $crons.command }}"] # git pull && source activate && python py/main.py D chan live-4chan
+              imagePullPolicy: {{ $.Values.image.pullPolicy }} 
+          restartPolicy: {{ $.Values.restartPolicy }}
+      parallelism: {{ $crons.parallelism }}
+      completions: {{ $crons.completions }}
+  concurrencyPolicy:  {{ $crons.concurrencyPolicy }} #Forbid
+---
+{{- end}}

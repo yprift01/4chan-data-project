@@ -1,0 +1,29 @@
+env: dcs  
+restartPolicy: OnFailure
+image:
+  repository: ylliprifti/yp-phd-repo
+  tag: prod-build
+  pullPolicy: Always 
+crons:
+- "0":
+  name: dcs-job-chan
+  type: discovery
+  app: 4chan
+  command: git pull && source activate && python py/main.py D chan live-4chan
+  schedule: "*/10 * * * *"
+  parallelism: 1
+  completions: 15
+  concurrencyPolicy: Forbid
+  startingDeadlineSeconds: 180
+- "1":
+  name: dcs-job-chan-extract
+  type: extraction
+  app: 4chan
+  command: git pull && source activate && python py/main.py E chan live-4chan
+  schedule: "*/10 * * * *"
+  parallelism: 10
+  completions: 100
+  concurrencyPolicy: Forbid
+  failedJobsHistoryLimit: 3
+  successfulJobsHistoryLimit: 1
+
